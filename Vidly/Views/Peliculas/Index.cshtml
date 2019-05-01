@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Peliculas en Cartelera!</h2>
+<style>
+    .column {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+    }
+
+    /* Clearfix (clear floats) */
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+@model IEnumerable<Vidly.Models.Pelicula>
+
+@if (!Model.Any())
+{
+    <p>No tenemos peliculas todavia.</p>
+}
+else
+{
+    <tbody>
+        <div class="row" id="Peliculas">
+
+            @foreach (var pelicula in Model)
+            {
+                <div class="column">
+                    <img src="/Images/@pelicula.imagen" style="width: 50%">
+                    <p></p>
+                    @Html.ActionLink("Ver Mas", "Detalles", "Peliculas", new { id = pelicula.Id }, new { @class = "btn btn-primary" })
+                    @if (User.IsInRole("PuedeInsertarPeliculas"))
+                    {
+                        <button data-pelicula-id="@pelicula.Id" class="btn-danger js-delete"> Eliminar</button>
+                    }
+                    </div>
+                    }
+
+
+                </div>
+        </tbody>
+
+}
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $("#Peliculas .js-delete").on("click", function () {
+                var button = $(this);
+
+                bootbox.confirm("Eliminar esta pelicula?",
+                    function(result) {
+                        if (result) {
+                            $.ajax({
+                                url: "/api/Peliculas/" + button.attr("data-pelicula-id"),
+                                method: "DELETE",
+                                success: function () {
+                                    button.parents("tr").remove();
+                                }
+
+                            });
+                        }
+                    });
+                });
+
+        });
+    </script>
+}

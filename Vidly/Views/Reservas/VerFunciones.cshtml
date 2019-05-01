@@ -1,0 +1,59 @@
+﻿@using System.Web.UI.WebControls
+@using Vidly.Models
+@model Vidly.ViewModels.verFuncionesViewModel
+
+
+@{
+    ViewBag.Title = "VerFunciones";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Nueva Reserva</h2>
+
+<p>Reserva de pelicula: @Model.Pelicula.Nombre </p>
+<p></p>
+@using (Html.BeginForm("verSalas", "Reservas"))
+{
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Reserva.FuncionId)
+        @Html.DropDownListFor(m => m.Reserva.FuncionId, new SelectList(Model.Funcions, "Id", "horario"), "Selecciona horario", new {@class = "form-control", @required=true})
+        
+        
+    </div>
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.Reserva.CantidadDeAsientosAReservar)
+        <p></p>
+        @Html.TextBoxFor(m =>m.Reserva.CantidadDeAsientosAReservar, new { @class = "form-control", @Value ="1", type = "number", min =1, max=3})
+    </div>
+
+    <button type="submit" class="btn btn-primary">Ver Salas</button>
+
+}
+@*
+    @section scripts
+    {
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+        <script type="text/javascript">
+            $(function() {
+                $("[id*=Reserva_FuncionId]").click(function () {
+                    var Reserva_FuncionId = $("[id*=Reserva_FuncionId]");
+                    var selectedText = Reserva_FuncionId.find("option:selected").text();
+                    var selectedvalue = Reserva_FuncionId.val();
+                    return false;
+                });
+            });
+        </script>
+
+    }
+*@
+
+
+
+
+
+
+

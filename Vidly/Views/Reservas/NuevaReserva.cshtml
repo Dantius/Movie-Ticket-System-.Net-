@@ -1,0 +1,50 @@
+﻿@using Vidly.Models
+@model Vidly.ViewModels.ReservaSalasViewModel
+<style>
+    .column {
+        float: left;
+        width: 20%;
+        padding: 5px;
+    }
+
+    /* Clearfix (clear floats) */
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+</style>
+@{
+    ViewBag.Title = "NuevaReserva";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Nueva Reserva</h2>
+
+<p>Reserva de pelicula: @Model.Pelicula.Nombre </p>
+<p></p>
+
+
+
+
+
+<tbody>
+<div class="row">
+
+    @foreach (var asientos in Model.Asientos)
+    {
+        <div class="column">
+            <img src="/Images/21.png" style="width: 10%">
+            <p>Holas</p>
+            <p></p>
+        </div>
+    }
+        
+        
+</div>     
+
+</tbody>
+
+
+
+

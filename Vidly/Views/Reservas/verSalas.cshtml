@@ -1,0 +1,402 @@
+﻿@using Vidly.Models
+@model Vidly.ViewModels.ReservaSalasViewModel
+<style>
+    .column {
+        float: left;
+        width: 60px;
+        padding: 3px;
+
+    }
+
+    .img {
+        height: 51px;
+        width: 50px;
+
+    }
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    input[type=checkbox] {
+        display:none;
+    }
+
+    img[type=imagenOcupado] {
+        border: 0; 
+        padding: 0;
+        border-collapse: collapse;
+        background:url(/Images/ocupado.png) no-repeat;
+        height: 60px;
+        width: 50px;
+        background-size: 100%;
+    }
+    input[type=checkbox] + label {
+        display:inline-block;
+        padding: 4px;
+        background:url(/Images/vacio.png) no-repeat;
+        height: 50px;
+        width: 50px;
+        background-size: 100%;
+    }
+
+    input[type=checkbox]:checked + label {
+        background:url(/Images/elegir.png) no-repeat;
+        height: 50px;
+        width: 50px;
+        display:inline-block;
+        background-size: 100%;
+    }
+
+
+</style>
+
+@{
+    ViewBag.Title = "NuevaReserva";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Nueva Reserva</h2>
+
+<p>Reserva de pelicula: @Model.Pelicula.Nombre</p>
+<p></p>
+<img src="/Images/pantalla.jpg" style="width: 100%">
+
+
+@using (Html.BeginForm("GuardarNuevaReserva", "Reservas"))
+{
+
+    <div class="row">
+    <p></p>
+    <div class="row">
+    <div class="column"></div>
+    <div class="column"></div>
+
+    <div class="column">
+
+        @foreach (var asientos in Model.Asientos)
+        {
+            if (asientos.nroAsiento >= 1 && asientos.nroAsiento <= 7)
+            {
+                if (asientos.estaOcupado)
+                {
+                    <img type="imagenOcupado">
+                }
+                else
+                {
+                    <input type="checkbox" name='tech' id=@asientos.Id value=@asientos.Id>
+                    <label for=@asientos.Id></label>
+                }
+            }
+        }
+    </div>
+
+
+    <div class="column">
+        @foreach (var asientos in Model.Asientos)
+        {
+            if (asientos.nroAsiento >= 8 && asientos.nroAsiento <= 14)
+            {
+                <input type="checkbox" name='tech' id=@asientos.Id value=@asientos.Id>
+                <label for=@asientos.Id></label>
+            }
+        }
+
+    </div>
+
+    <div class="column">
+        @foreach (var asientos in Model.Asientos)
+        {
+            if (asientos.nroAsiento >= 15 && asientos.nroAsiento <= 21)
+            {
+                if (asientos.estaOcupado)
+                {
+                    <img type="imagenOcupado">
+                }
+                else
+                {
+                    <input type="checkbox" name='tech' id=@asientos.Id value=@asientos.Id>
+                    <label for=@asientos.Id></label>
+                }
+            }
+        }
+
+    </div>
+    <div class="column"></div>
+
+    <div class="column">
+        @foreach (var asientos in Model.Asientos)
+        {
+            if (asientos.nroAsiento >= 22 && asientos.nroAsiento <= 28)
+            {
+                if (asientos.estaOcupado)
+                {
+                    <img type="imagenOcupado">
+                }
+                else
+                {
+                    <input type="checkbox" name='tech' id=@asientos.Id value=@asientos.Id>
+                    <label for=@asientos.Id></label>
+                }
+            }
+        }
+
+    </div>
+
+    <div class="column">
+        @foreach (var asientos in Model.Asientos)
+        {
+            if (asientos.nroAsiento >= 29 && asientos.nroAsiento <= 35)
+            {
+                if (asientos.estaOcupado)
+                {
+                    <img type="imagenOcupado">
+                }
+                else
+                {
+                    <input type="checkbox" name='tech' id=@asientos.Id value=@asientos.Id>
+                    <label for=@asientos.Id></label>
+                }
+            }
+        }
+
+    </div>
+
+    <div class="column">
+        @foreach (var asientos in Model.Asientos)
+        {
+            if (asientos.nroAsiento >= 36 && asientos.nroAsiento <= 42)
+            {
+                if (asientos.estaOcupado)
+                {
+                    <img type="imagenOcupado">
+                }
+                else
+                {
+                    <input type="checkbox" name='tech' id=@asientos.Id value=@asientos.Id>
+                    <label for=@asientos.Id></label>
+                }
+            }
+        }
+
+    </div>
+
+    <div class="column">
+        @foreach (var asientos in Model.Asientos)
+        {
+            if (asientos.nroAsiento >= 43 && asientos.nroAsiento <= 49)
+            {
+                if (asientos.estaOcupado)
+                {
+                    <img type="imagenOcupado">
+                }
+                else
+                {
+                    <input type="checkbox" name='tech' id=@asientos.Id value=@asientos.Id>
+                    <label for=@asientos.Id></label>
+                }
+            }
+        }
+
+    </div>
+    <div class="column">
+        @foreach (var asientos in Model.Asientos)
+        {
+            if (asientos.nroAsiento >= 50 && asientos.nroAsiento <= 56)
+            {
+                if (asientos.estaOcupado)
+                {
+                    <img type="imagenOcupado">
+                }
+                else
+                {
+                    <input type="checkbox" name='tech' id=@asientos.Id value=@asientos.Id>
+                    <label for=@asientos.Id></label>
+                }
+
+            }
+        }
+    </div>
+
+    <div class="column">
+        @foreach (var asientos in Model.Asientos)
+        {
+            if (asientos.nroAsiento >= 57 && asientos.nroAsiento <= 63)
+            {
+                if (asientos.estaOcupado)
+                {
+                    <img type="imagenOcupado">
+                }
+                else
+                {
+                    <input type="checkbox" name='tech' id=@asientos.Id value=@asientos.Id>
+                    <label for=@asientos.Id></label>
+                }
+            }
+        }
+
+    </div>
+
+    <div class="column">
+        @foreach (var asientos in Model.Asientos)
+        {
+            if (asientos.nroAsiento >= 64 && asientos.nroAsiento <= 70)
+            {
+                if (asientos.estaOcupado)
+                {
+                    <img type="imagenOcupado">
+                }
+                else
+                {
+                    <input type="checkbox" name='tech' id=@asientos.Id value=@asientos.Id>
+                    <label for=@asientos.Id></label>
+                }
+            }
+        }
+
+    </div>
+
+    <div class="column">
+        @foreach (var asientos in Model.Asientos)
+        {
+            if (asientos.nroAsiento >= 71 && asientos.nroAsiento <= 77)
+            {
+                if (asientos.estaOcupado)
+                {
+                    <img type="imagenOcupado">
+                }
+                else
+                {
+                    <input type="checkbox" name='tech' id=@asientos.Id value=@asientos.Id>
+                    <label for=@asientos.Id></label>
+                }
+            }
+        }
+
+    </div>
+    <div class="column"></div>
+
+    <div class="column">
+        @foreach (var asientos in Model.Asientos)
+        {
+            if (asientos.nroAsiento >= 78 && asientos.nroAsiento <= 84)
+            {
+                if (asientos.estaOcupado)
+                {
+                    <img type="imagenOcupado">
+                }
+                else
+                {
+                    <input type="checkbox" name='tech' id=@asientos.Id value=@asientos.Id>
+                    <label for=@asientos.Id></label>
+                }
+            }
+        }
+
+    </div>
+
+    <div class="column">
+        @foreach (var asientos in Model.Asientos)
+        {
+            if (asientos.nroAsiento >= 85 && asientos.nroAsiento <= 91)
+            {
+                if (asientos.estaOcupado)
+                {
+                    <img type="imagenOcupado">
+                }
+                else
+                {
+                    <input type="checkbox" name='tech' id=@asientos.Id value=@asientos.Id>
+                    <label for=@asientos.Id></label>
+                }
+            }
+        }
+
+    </div>
+
+    <div class="column">
+        @foreach (var asientos in Model.Asientos)
+        {
+            if (asientos.nroAsiento >= 92 && asientos.nroAsiento <= 98)
+            {
+                if (asientos.estaOcupado)
+                {
+                    <img type="imagenOcupado">
+                }
+                else
+                {
+                    <input type="checkbox" name='tech' id=@asientos.Id value=@asientos.Id>
+                    <label for=@asientos.Id></label>
+                }
+            }
+        }
+
+    </div>
+
+    </div>
+
+
+
+    </div>
+
+
+
+<button type = "submit" class="btn btn-success" style="position: relative; top: 25px; left: 50%;"> Reservar </button>
+
+}
+
+    @section scripts
+{
+        <script>
+
+            $(document).ready(function () {
+                $("input[name='tech']").change(function () {
+                    var maxAllowed = @Model.CantidadDeAsientosAReservar;
+                    var cnt = $("input[name='tech']:checked").length;
+                    if (cnt > maxAllowed) {
+                        $(this).prop("checked", "");
+                        alert('Cantidad de asientos maximos a seleccionar: ' + maxAllowed);
+                    }
+                });
+            });
+
+
+            /*         $(document).ready(function(){
+                         $('input[type="checkbox"]').click(function(){
+                             if($(this).is(":checked")){
+                                 alert("Checkbox is checked.");
+                             }
+                             else if($(this).is(":not(:checked)")){
+                                 alert("Checkbox is unchecked.");
+                             }
+                         });
+                     });*/
+
+
+        </script>
+
+        <script>
+            $('#submit').on('click', function () {
+                var STRMS = [];
+                $('input:checked').each(function () {
+                    STRMS.push($(this).attr("value"));
+                });
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GuardarNuevaReserva","Reservas")',
+                    dataType: "html",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify({ STRMSelected: STRMS }),
+                    success:
+                        function (data) {  }
+
+                });
+            });
+        </script>
+    }
+
+
+
+
+

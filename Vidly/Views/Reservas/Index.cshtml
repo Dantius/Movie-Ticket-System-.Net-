@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Vidly.Models.ReservasConfirmadas>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Mis Reservas</h2>
+
+
+@if (!Model.Any())
+{
+    <p>No generaste ninguna reserva todavia!.</p>
+}
+else
+{
+    <p>Esta es la lista de tu Historial de Reservas</p>
+
+    <table class="table table-bordered table-hover" id="Reservas">
+        <tr>
+            <th>Pelicula</th>
+            <th>Horario</th>
+            <th>Asientos</th>
+            @if (User.IsInRole("PuedeInsertarPeliculas"))
+            {
+                <th>Usuario</th>
+     /*           <th>Eliminar</th>   */
+
+            }
+        </tr>
+
+        @foreach (var funcion in Model)
+        {
+            <tr>
+
+                <td>@funcion.Funcion.Pelicula.Nombre</td>
+                <td>@funcion.Funcion.horario </td>
+                <td>
+                    @if (@funcion.asiento1 > 0)
+                    {
+
+                        @funcion.asiento1
+                    }
+
+                    @if (@funcion.asiento2 > 0)
+                    {
+
+                        @funcion.asiento2
+                    }
+                    @if (@funcion.asiento3 > 0)
+                    {
+
+                        @funcion.asiento3;
+                    }
+
+                </td>
+                @if (User.IsInRole("PuedeInsertarPeliculas"))
+                    {
+
+                    <td>@funcion.usuarioMail</td>/*
+<td>
+<button data-reserva-id="@funcion.Id" class="btn-link js-delete"> Eliminar</button>
+</td>*/
+
+
+              }
+            </tr>
+
+        }
+
+    </table>
+    <p></p>
+
+}
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#Reservas").DataTable();
+
+            $("#Reservas .js-delete").on("click", function () {
+                var button = $(this);
+
+                if (confirm("Eliminar esta pelicula?")) {
+                    $.ajax({
+                        url: "/reservas/" + button.attr("data-reserva-id"),
+                        method: "DELETE",
+                        success: function() {
+                            console.log("success");
+                        }
+
+                    });
+                }
+            });
+
+        });
+
+    </script>
+    
+
+}
+

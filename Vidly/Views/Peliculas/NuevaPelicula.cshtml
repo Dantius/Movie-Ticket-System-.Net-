@@ -1,0 +1,32 @@
+﻿@model Vidly.Models.Pelicula
+@{
+    ViewBag.Title = "NuevaPelicula";
+   // Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Nueva Pelicula</h2>
+
+
+@using (Html.BeginForm("Create", "Peliculas"))
+{
+    <div class="form-group">
+        @Html.LabelFor(p=> p.Nombre)
+        @Html.TextBoxFor(p => p.Nombre, new {@class = "form-control", @required = true })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p=> p.Descripcion)
+        @Html.TextBoxFor(p => p.Descripcion, new {@class = "form-control", @required = true  })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.FechaDeEstreno)
+        @Html.TextBoxFor(p => p.FechaDeEstreno, new { @class = "form-control", @required = true })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p=> p.imagen)
+        @Html.TextBoxFor(p => p.imagen, new {@class = "form-control", @required = true })
+    </div> 
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+}
+
+

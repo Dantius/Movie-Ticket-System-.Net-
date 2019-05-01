@@ -1,0 +1,65 @@
+﻿@model Vidly.ViewModels.ReservaConfirmadaViewModel
+
+@{
+    ViewBag.Title = "ConfirmacionReserva";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<h2>Confirmacion de tu Reserva</h2>
+
+<p> Tu reserva ha sido confirmada!</p>
+
+
+<table>
+    <tr>
+        <th>Pelicula</th>
+        <th>Horario</th>
+        <th>Asientos</th>
+    </tr>
+    <tr>
+        <td>@Model.Pelicula.Nombre </td>
+        <td>@Model.ReservasConfirmadas.Funcion.horario </td>
+        <td>
+            @if (@Model.ReservasConfirmadas.asiento1 > 0)
+            {
+
+                @Model.ReservasConfirmadas.asiento1
+            }
+
+            @if (@Model.ReservasConfirmadas.asiento2 > 0)
+            {
+
+                @Model.ReservasConfirmadas.asiento2
+            }
+            @if (@Model.ReservasConfirmadas.asiento3 > 0)
+            {
+
+                @Model.ReservasConfirmadas.asiento3
+            }
+        </td>
+    </tr>
+</table>
+<p></p>
+
+<div>@Html.ActionLink("Volver a la pagina Principal", "Index", "Home")</div>
+
+
+

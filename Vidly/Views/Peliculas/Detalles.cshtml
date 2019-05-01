@@ -1,0 +1,27 @@
+﻿@model Vidly.Models.Pelicula
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalles</h2>
+
+
+
+<h2 align="middle"> @Model.Nombre</h2>
+
+<img src="/Images/@Model.imagen" style="width:10%" align="middle">
+<br/>
+<p></p>
+<p>@Model.Descripcion</p>
+
+
+<ul>
+    <li> Fecha de Estreno: @Model.FechaDeEstreno</li>
+
+</ul>
+
+
+@Html.ActionLink("Reservar subtitulada!", "VerFunciones", "Reservas", new {idPelicula = @Model.Id, idtipo=1}, new {@class = "btn btn-primary"})
+@Html.ActionLink("Reservar castellano!", "VerFunciones", "Reservas", new { idPelicula = @Model.Id, idtipo = 2}, new { @class = "btn btn-primary" })
+@Html.ActionLink("Reservar en 3D!", "VerFunciones", "Reservas", new { idPelicula = @Model.Id, idtipo = 3 }, new { @class = "btn btn-primary" })
